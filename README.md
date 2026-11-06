@@ -7,7 +7,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173/portfolio/
+Open http://localhost:5173/latest-portfoilo-website/
 
 ## Edit content
 
@@ -30,4 +30,4 @@ src/
 
 ## Deploy to GitHub Pages
 
-Pushing to `main` builds and publishes the site automatically (`.github/workflows/deploy.yml`). Live at https://eihtet250.github.io/portfolio/. `base` in `vite.config.js` must match the repo name.
+Pushing to `main` builds and publishes the site automatically (`.github/workflows/deploy.yml`). Live at https://eihtet250.github.io/latest-portfoilo-website/. `base` in `vite.config.js` must match the repo name.
