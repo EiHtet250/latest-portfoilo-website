@@ -1,0 +1,198 @@
+/* Warm charcoal base with solid pink + lavender accents.
+   The gradient is reserved for the primary button only. */
+:root {
+  --bg: #242128;
+  --bg-alt: #2d2733;
+  --card: #352e3c;
+  --card-border: #514559;
+
+  --pink: #e3a0c4;
+  --lavender: #b6a0da;
+  --text: #faf7f5;
+  --muted: #cec5d3;
+
+  --paper: #faf5f0;
+  --paper-text: #352c3d;
+  --tape: #e3a0c4;
+
+  --gradient: linear-gradient(120deg, var(--lavender), var(--pink));
+  --radius: 16px;
+  --shadow: 0 16px 40px rgba(10, 6, 14, 0.35);
+  --font: 'Poppins', system-ui, sans-serif;
+  --hand: 'Caveat', cursive;
+
+  --container: 1200px;
+  --gutter: 24px;
+  --header-h: 80px;
+  --section-y: 88px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps section titles clear of the fixed header when jumping to an anchor */
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  padding: var(--section-y) 0;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-title {
+  margin: 0 0 20px;
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.section-title span {
+  color: var(--pink);
+}
+
+.section-lead {
+  max-width: 600px;
+  margin: 0 0 44px;
+  color: var(--muted);
+}
+
+/* About, Projects and Contact use centred headings */
+.section-head-center {
+  text-align: center;
+}
+
+.section-head-center .section-lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #2a2030;
+}
+
+.btn-outline {
+  border-color: var(--card-border);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  border-color: var(--pink);
+}
+
+.btn-disabled {
+  border-color: var(--card-border);
+  color: var(--muted);
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-disabled:hover {
+  transform: none;
+}
+
+.chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--lavender);
+  background: rgba(182, 160, 218, 0.12);
+  border: 1px solid rgba(182, 160, 218, 0.3);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+    --section-y: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

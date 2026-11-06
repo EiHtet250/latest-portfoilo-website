@@ -1,0 +1,189 @@
+/* ---------- Filter tabs ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: -12px 0 40px;
+}
+
+.filter {
+  padding: 8px 18px;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.filter:hover {
+  color: var(--text);
+  border-color: var(--pink);
+}
+
+.filter.is-active {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #2a2030;
+}
+
+/* ---------- Cards: three equal columns ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: pop-in 0.3s ease both;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.project-card:hover {
+  border-color: var(--pink);
+  transform: translateY(-4px);
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.project-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--card-border);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.project-thumb img,
+.project-thumb .project-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.4s;
+}
+
+.project-thumb:hover img {
+  transform: scale(1.04);
+}
+
+.thumb-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(36, 33, 40, 0.7);
+  color: var(--text);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.project-thumb:hover .thumb-hint,
+.project-thumb:focus-visible .thumb-hint {
+  opacity: 1;
+}
+
+.project-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 24px;
+  text-align: center;
+  background: var(--bg-alt);
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.project-placeholder small {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.project-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.project-period {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.project-body h3 {
+  margin: 4px 0 2px;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.project-role {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--pink);
+}
+
+.project-summary {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Pushes buttons to the bottom so every card lines up */
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}

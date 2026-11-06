@@ -1,0 +1,340 @@
+/* Rose on the left, overlapping the paper card like a pressed flower */
+.contact-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  align-items: center;
+}
+
+.contact-rose {
+  position: relative;
+  z-index: 1;
+  margin-right: -120px;
+  pointer-events: none;
+}
+
+.contact-rose svg,
+.contact-rose img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  filter: drop-shadow(0 18px 30px rgba(10, 6, 14, 0.35));
+  /* Gentle sway from the bottom of the stem, like a light breeze */
+  transform-origin: 50% 95%;
+  animation: rose-sway 7s ease-in-out infinite alternate;
+}
+
+@keyframes rose-sway {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(1.5deg) translateY(-4px);
+  }
+  100% {
+    transform: rotate(2.5deg);
+  }
+}
+
+/* ---------- Falling petals ---------- */
+.petals {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  left: var(--sx);
+  top: var(--sy);
+  width: var(--size);
+  opacity: 0;
+  animation: petal-fall linear infinite both;
+}
+
+/* Drift down to the note, rest there for a moment, then fade */
+@keyframes petal-fall {
+  0% {
+    left: var(--sx);
+    top: var(--sy);
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  8% {
+    opacity: 0.95;
+  }
+  62% {
+    left: var(--ex);
+    top: var(--ey);
+    transform: rotate(var(--rot));
+  }
+  88% {
+    left: var(--ex);
+    top: var(--ey);
+    opacity: 0.95;
+    transform: rotate(var(--rot));
+  }
+  100% {
+    left: var(--ex);
+    top: var(--ey);
+    opacity: 0;
+    transform: rotate(var(--rot));
+  }
+}
+
+.petal-shape {
+  display: block;
+  width: 100%;
+  fill: #e892b8;
+  filter: drop-shadow(0 3px 3px rgba(53, 44, 61, 0.3));
+  animation: petal-flutter 1.6s ease-in-out infinite alternate;
+}
+
+/* Side-to-side flutter while falling */
+@keyframes petal-flutter {
+  from {
+    transform: translateX(-10px) rotateY(0deg);
+  }
+  to {
+    transform: translateX(10px) rotateY(55deg);
+  }
+}
+
+.contact-paper {
+  position: relative;
+  padding: 48px 56px 40px 160px;
+  border-radius: 20px;
+  background: var(--paper);
+  color: var(--paper-text);
+  box-shadow: var(--shadow);
+}
+
+/* Same pink tape as the About notes */
+.contact-paper::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 96px;
+  height: 24px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: var(--tape);
+  opacity: 0.85;
+}
+
+.contact-eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.contact-title {
+  margin-bottom: 8px;
+  color: var(--paper-text);
+}
+
+/* Hand-drawn underline */
+.contact-title::after {
+  content: '';
+  display: block;
+  width: 160px;
+  height: 10px;
+  margin: 2px auto 0;
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 10'%3E%3Cpath d='M3 7 Q80 -1 157 6' fill='none' stroke='%23d27a9d' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.contact-text {
+  max-width: 460px;
+  margin: 0 auto 28px;
+  font-family: var(--hand);
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+
+/* ---------- Form ---------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #dccfd6;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--paper-text);
+  font-weight: 400;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #9a8da2;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(227, 160, 196, 0.35);
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.form-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.form-status {
+  min-height: 1.6em;
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ---------- Contact cards: four equal in one row ---------- */
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 24px;
+  transition: border-color 0.25s;
+}
+
+.contact-link:hover {
+  border-color: var(--pink);
+}
+
+.contact-link-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.copy-btn:hover,
+.copy-btn.is-copied {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.contact-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(227, 160, 196, 0.14);
+  color: var(--pink);
+}
+
+.contact-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-value {
+  font-weight: 500;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-value:hover {
+  color: var(--pink);
+}
+
+.contact-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .contact-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-rose {
+    width: 200px;
+    margin: 0 auto -90px;
+    transform: rotate(-12deg);
+  }
+
+  .contact-paper {
+    padding: 100px 40px 40px;
+  }
+
+  /* Rose is above the note here, so petals use the mobile paths */
+  .petal {
+    --sx: var(--msx);
+    --sy: var(--msy);
+    --ex: var(--mex);
+    --ey: var(--mey);
+  }
+
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-paper {
+    padding: 96px 20px 28px;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,100 @@
+/* Two equal columns; headings and first entries line up */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.timeline-title {
+  margin: 0 0 24px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--pink);
+}
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 2px solid var(--card-border);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 28px 24px;
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--lavender);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+.timeline-period {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--lavender);
+}
+
+.timeline h4,
+.competition h4 {
+  margin: 2px 0 4px;
+  font-size: 1.05rem;
+}
+
+.timeline h4 span {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.timeline p:last-child,
+.competition p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.competition-heading {
+  margin-top: 56px;
+}
+
+.competition-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.competition {
+  padding: 24px;
+  transition: border-color 0.25s;
+}
+
+.competition:hover {
+  border-color: var(--pink);
+}
+
+@media (max-width: 900px) {
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .competition-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .competition-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,154 @@
+.about-hello {
+  margin: -8px 0 44px;
+  font-family: var(--hand);
+  font-size: 1.9rem;
+  color: var(--lavender);
+}
+
+/* Two cards | photo + fun fact | two cards, top edges aligned */
+.about-board {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr 1fr;
+  align-items: start;
+  gap: 32px;
+}
+
+.note-stack,
+.about-center {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-center {
+  align-items: center;
+}
+
+/* ---------- Paper notes ---------- */
+.note {
+  position: relative;
+  width: 100%;
+  padding: 24px;
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--paper-text);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s;
+}
+
+.note::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 72px;
+  height: 20px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: var(--tape);
+  opacity: 0.85;
+}
+
+/* Gentle tilt, max ±2deg so the notes stay readable */
+.note-stack-left .note:nth-child(odd),
+.note-stack-right .note:nth-child(even) {
+  transform: rotate(-2deg);
+}
+
+.note-stack-left .note:nth-child(even),
+.note-stack-right .note:nth-child(odd),
+.about-center .note {
+  transform: rotate(1.5deg);
+}
+
+.note:hover {
+  transform: rotate(0);
+}
+
+.note h3 {
+  display: inline-block;
+  margin: 0 0 6px;
+  font-family: var(--hand);
+  font-size: 1.7rem;
+  line-height: 1.1;
+  background: linear-gradient(transparent 62%, rgba(227, 160, 196, 0.5) 62%);
+}
+
+.note p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+/* ---------- Polaroid ---------- */
+.polaroid {
+  width: 100%;
+  max-width: 320px;
+  margin: 0;
+  padding: 14px 14px 16px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  transform: rotate(-1.5deg);
+}
+
+.polaroid-photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--lavender);
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.polaroid-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.polaroid figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-family: var(--hand);
+  font-size: 1.4rem;
+  color: var(--paper-text);
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.about-tags em {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+  .about-board {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-center {
+    grid-column: 1 / -1;
+    order: -1;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+/* Phones: photo first, then every note in one column */
+@media (max-width: 640px) {
+  .about-board {
+    grid-template-columns: 1fr;
+  }
+
+  .about-center {
+    max-width: none;
+  }
+}

@@ -1,0 +1,178 @@
+/* Four equal columns; every card is the same height so rows line up */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr; /* every row as tall as the tallest, so placeholders match */
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cert-grid li {
+  display: flex;
+}
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+a.cert-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--pink);
+  box-shadow: var(--shadow);
+}
+
+/* Same 4:3 frame for every certificate, picture or not */
+.cert-preview {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  padding: 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* Whole certificate visible; tall (portrait) ones sit centred in the same frame */
+.cert-preview {
+  position: relative;
+}
+
+.cert-preview img {
+  position: absolute;
+  inset: 16px;
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  object-fit: contain;
+  border-radius: 4px;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+
+/* Drawn certificate shown when there's no picture */
+.cert-paper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--paper-text);
+  text-align: center;
+  outline: 2px solid var(--pink);
+  outline-offset: -8px;
+}
+
+.cert-paper-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a7a94;
+}
+
+.cert-paper-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: var(--hand);
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.cert-paper-seal {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gradient);
+}
+
+.cert-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px 18px 18px;
+}
+
+.cert-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3.9em;
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cert-meta {
+  margin: 0 0 12px;
+  font-size: 0.82rem;
+  color: var(--lavender);
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--pink);
+}
+
+/* "Coming soon" placeholder slots */
+.cert-card-empty {
+  border: 1px dashed var(--card-border);
+  border-radius: var(--radius);
+}
+
+.cert-card-empty .cert-preview {
+  background: transparent;
+  border-bottom-style: dashed;
+}
+
+.cert-empty-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px dashed var(--card-border);
+  font-size: 1.5rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.cert-empty-text {
+  margin: auto 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0.6;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,155 @@
+.navbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.navbar.is-scrolled {
+  background: rgba(36, 33, 40, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--card-border);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Logo mark (public/logo.svg) */
+.brand-logo {
+  display: block;
+  width: 44px;
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.25s;
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.06);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links a {
+  position: relative;
+  display: block;
+  padding: 6px 0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  color: var(--text);
+}
+
+/* Pink underline on the active section */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--pink);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+
+.nav-links a.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav-links .nav-cv {
+  padding: 8px 18px;
+  border: 1.5px solid var(--pink);
+  border-radius: 999px;
+  color: var(--pink);
+  font-weight: 600;
+}
+
+.nav-links .nav-cv::after {
+  display: none;
+}
+
+.nav-links .nav-cv:hover {
+  background: var(--pink);
+  color: #2a2030;
+}
+
+.menu-toggle {
+  display: none;
+  padding: 8px;
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: var(--header-h);
+    left: var(--gutter);
+    right: var(--gutter);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px 0;
+  }
+
+  .nav-links a::after {
+    right: auto;
+    width: 32px;
+  }
+
+  .nav-links .nav-cv {
+    margin-top: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    display: none;
+  }
+}
