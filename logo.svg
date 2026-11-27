@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="390 330 455 375" role="img" aria-label="Ei Htet Htet Tun logo">
+  <g stroke-linejoin="round" stroke-width="14">
+    <!-- top bar of the E -->
+    <path fill="#f3a5cd" stroke="#f3a5cd" d="M474 386 L694 386 L664 442 L446 442 Z" />
+    <!-- middle bar of the E -->
+    <path fill="#f7f3f6" stroke="#f7f3f6" d="M448 500 L598 500 L572 556 L420 556 Z" />
+    <!-- bottom bar of the E flowing into the H -->
+    <path fill="#f7f3f6" stroke="#f7f3f6" d="M410 672 L438 614 L614 614 L614 524 L690 524 L766 480 L766 390 L828 352 L828 516 L764 556 L688 556 L688 636 L604 672 Z" />
+    <!-- lower right leg of the H -->
+    <path fill="#b5a0dc" stroke="#b5a0dc" d="M766 596 L828 556 L828 644 L766 684 Z" />
+  </g>
+</svg>
