@@ -76,6 +76,51 @@ export const projectFilters = [
 // Projects show in this order, so put the newest first.
 export const projects = [
   {
+    id: 'travel-list',
+    title: 'My Travel List',
+    role: 'Front-end developer',
+    categories: ['web'],
+    period: 'Nov 2026 · School project',
+    images: [`${SITE}/images/travel-list.png`], // TODO: add a screenshot of the app as public/images/travel-list.png
+    summary: 'A packing list for trips. Add what you need to bring, tick things off as you pack, and see how much is left.',
+    contribution: [
+      'Split the app into small React components: Logo, Form, PackingList, Item and Stats',
+      'Kept the list in one useState in App and passed add, delete and toggle handlers down as props',
+      'Added a search box that filters the list as you type',
+      'Worked out the packed percentage live, so the footer always shows how close you are to done',
+    ],
+    tags: ['React', 'JavaScript', 'useState', 'Vercel'],
+    outcome: 'Deployed on Vercel, so anyone can try it in the browser.',
+    demo: 'https://mytravellistapp.vercel.app',
+    video: null,
+    code: 'https://github.com/EiHtet250/MyTravelList_app',
+  },
+  {
+    id: 'pizza-menu',
+    title: "Ei Htet's Pizzeria",
+    role: 'Front-end developer',
+    categories: ['web'],
+    period: 'Nov 2026 · C304 Cloud Application Development',
+    // TODO: put a screenshot of the site first (e.g. public/images/pizza-home.png); the menu photos can stay after it
+    images: [
+      `${SITE}/images/pizza-margherita.jpg`,
+      `${SITE}/images/pizza-funghi.jpg`,
+      `${SITE}/images/pizza-spinaci.jpg`,
+    ],
+    summary: 'A menu page for a small pizza shop, built in React, that shows each pizza with its photo, ingredients and price.',
+    contribution: [
+      'Rendered the whole menu from one data array, with a reusable Pizza component for each item',
+      'Marked sold-out pizzas automatically from the data',
+      'Showed "open" or "closed" in the footer based on the current time (10am to 10pm)',
+      'Added a heart button on each pizza that counts favourites with useState',
+    ],
+    tags: ['React', 'JavaScript', 'CSS', 'Vercel'],
+    outcome: 'My first React app, deployed to the cloud on Vercel for the C304 module.',
+    demo: 'https://htet-htet-pizza.vercel.app',
+    video: null,
+    code: 'https://github.com/EiHtet250/HtetHtet_pizza',
+  },
+  {
     id: 'pokemon-cards',
     title: 'Pokémon Card Collection',
     role: 'Mobile app developer',
