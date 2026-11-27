@@ -15,7 +15,7 @@ export default function Hero() {
             <span className="pulse" /> {profile.availability}
           </p>
           <h1 className="hero-title">
-            Web &amp; <span>Mobile App</span> Developer
+            Web &amp; <span>Mobile</span> Developer
           </h1>
           <div className="hero-actions">
             <a href="#projects" className="btn btn-primary">
@@ -59,7 +59,7 @@ function Mountains() {
   return (
     <svg className="hero-mountains" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
       <path fill="#b6a0da" fillOpacity="0.14" d="M0 200 160 150l140 40 170-90 160 70 150-60 180 80 170-50 140 40 170-60v200H0Z" />
-      <path fill="#e3a0c4" fillOpacity="0.12" d="M0 240 180 190l150 50 200-80 170 90 190-60 170 50 200-40 180 60v120H0Z" />
+      <path fill="#F472B6" fillOpacity="0.12" d="M0 240 180 190l150 50 200-80 170 90 190-60 170 50 200-40 180 60v120H0Z" />
       <path fill="#2d2733" d="M0 270 220 200l120 50 130-20 160 60 220-50 200 40 190-30 200 50v40H0Z" />
       <rect y="300" width="1440" height="20" fill="#2d2733" />
     </svg>

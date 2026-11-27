@@ -79,6 +79,11 @@
   transition: transform 0.4s;
 }
 
+.project-thumb.is-phone img {
+  object-fit: contain;
+  padding: 12px 0;
+}
+
 .project-thumb:hover img {
   transform: scale(1.04);
 }

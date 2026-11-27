@@ -6,14 +6,14 @@
   --card: #352e3c;
   --card-border: #514559;
 
-  --pink: #e3a0c4;
+  --pink: #F472B6;
   --lavender: #b6a0da;
   --text: #faf7f5;
   --muted: #cec5d3;
 
   --paper: #faf5f0;
   --paper-text: #352c3d;
-  --tape: #e3a0c4;
+  --tape: #F472B6;
 
   --gradient: linear-gradient(120deg, var(--lavender), var(--pink));
   --radius: 16px;

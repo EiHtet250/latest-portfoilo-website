@@ -116,15 +116,24 @@ export default function ProjectPage({ project }) {
   );
 }
 
+// 'https://youtu.be/ID' or 'https://www.youtube.com/watch?v=ID' → privacy-friendly embed URL.
+function youtubeEmbed(url) {
+  const id = url.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/)([\w-]{11})/)?.[1];
+  return id ? `https://www.youtube-nocookie.com/embed/${id}` : null;
+}
+
 // Swipeable photo strip: scroll/swipe sideways, use the arrows, or pick a thumbnail.
+// A project video becomes the last slide.
 function Gallery({ project }) {
   const trackRef = useRef(null);
   const [shown, setShown] = useState(0);
-  const { images, title } = project;
+  const { title } = project;
+  const videoSrc = project.video && youtubeEmbed(project.video);
+  const slides = [...project.images.map((src) => ({ src })), ...(videoSrc ? [{ video: videoSrc }] : [])];
 
   const goTo = (i) => {
     const track = trackRef.current;
-    const target = (i + images.length) % images.length;
+    const target = (i + slides.length) % slides.length;
     track.scrollTo({ left: target * track.clientWidth, behavior: 'smooth' });
   };
 
@@ -143,14 +152,24 @@ function Gallery({ project }) {
           tabIndex={0}
           aria-label={`${title} photos, scroll sideways to see more`}
         >
-          {images.map((src) => (
-            <div className="gallery-slide" key={src}>
-              <ProjectImage src={src} title={title} />
+          {slides.map((slide) => (
+            <div className="gallery-slide" key={slide.src ?? slide.video}>
+              {slide.video ? (
+                <iframe
+                  src={slide.video}
+                  title={`${title} demo video`}
+                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              ) : (
+                <ProjectImage src={slide.src} title={title} />
+              )}
             </div>
           ))}
         </div>
 
-        {images.length > 1 && (
+        {slides.length > 1 && (
           <>
             <button className="gallery-arrow is-prev" onClick={() => goTo(shown - 1)} aria-label="Previous photo">
               <Icon name="arrow" size={20} />
@@ -159,22 +178,22 @@ function Gallery({ project }) {
               <Icon name="arrow" size={20} />
             </button>
             <span className="gallery-count">
-              {shown + 1} / {images.length}
+              {shown + 1} / {slides.length}
             </span>
           </>
         )}
       </div>
 
-      {images.length > 1 && (
+      {slides.length > 1 && (
         <div className="gallery-thumbs">
-          {images.map((src, i) => (
+          {slides.map((slide, i) => (
             <button
-              key={src}
-              className={i === shown ? 'is-active' : ''}
+              key={slide.src ?? slide.video}
+              className={`${i === shown ? 'is-active' : ''} ${slide.video ? 'is-video' : ''}`}
               onClick={() => goTo(i)}
-              aria-label={`Show photo ${i + 1}`}
+              aria-label={slide.video ? 'Play the demo video' : `Show photo ${i + 1}`}
             >
-              <img src={src} alt="" />
+              {slide.video ? <Icon name="play" size={26} /> : <img src={slide.src} alt="" />}
             </button>
           ))}
         </div>

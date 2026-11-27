@@ -63,6 +63,7 @@ export const about = {
 export const projectFilters = [
   { id: 'all', label: 'All' },
   { id: 'web', label: 'Web Apps' },
+  { id: 'mobile', label: 'Mobile Apps' },
   { id: 'design', label: 'UI/UX' },
   { id: 'robotics', label: 'Robotics' },
 ];
@@ -71,7 +72,53 @@ export const projectFilters = [
 // - images: files in /public/images. The first one is the card thumbnail (shown at 16:10);
 //   all of them appear in the gallery on the project's own page. A missing file shows a placeholder.
 // - demo / code: full URLs, or null while you don't have one yet (the button shows "coming soon").
+// - video: optional YouTube link. Adds a "Watch video" button and a playable slide in the gallery.
+// Projects show in this order, so put the newest first.
 export const projects = [
+  {
+    id: 'pokemon-cards',
+    title: 'Pokémon Card Collection',
+    role: 'Mobile app developer',
+    categories: ['mobile'],
+    period: 'Nov 2026 · C346 Mobile App Development',
+    images: [`${SITE}/images/pokemon-home.png`], // TODO: add public/images/pokemon-home.png (and more screenshots)
+    summary: 'A React Native app for keeping track of Pokémon cards, sorted by type, with the real card artwork for each one.',
+    contribution: [
+      'Grouped cards into Water, Fire and Air sections with a SectionList, each with its own colour and icon',
+      'Loaded the official card image for every Pokémon from its card number',
+      'Built Add and Edit screens with React Navigation, so cards can be added, renamed or moved to another type',
+      'Added a Delete button with a confirmation alert so cards are not removed by accident',
+    ],
+    tags: ['React Native', 'Expo', 'React Navigation', 'JavaScript'],
+    outcome: 'Enhanced the lesson app so a card can change type and be deleted, not just added.',
+    demo: null,
+    video: null, // TODO: add the YouTube link for the demo video
+    code: 'https://github.com/EiHtet250/C346_L12_pokemon_enhencement',
+  },
+  {
+    id: 'flower-quiz',
+    title: "Guess the Flower's Name",
+    role: 'Mobile app developer',
+    categories: ['mobile', 'design'],
+    period: 'Nov 2026 · C346 Mobile App Development',
+    images: [
+      `${SITE}/images/flower-quiz-top.jpg`,
+      `${SITE}/images/flower-quiz-scrolled.jpg`,
+      `${SITE}/images/flower-quiz-hints.jpg`,
+    ],
+    summary: 'A React Native quiz where you look at a flower and pick its name. I restyled it with StyleSheet and Flexbox and added a hints button.',
+    contribution: [
+      'Moved every inline style into StyleSheet.create() to keep the code tidy',
+      'Rebuilt the layout with Flexbox: question cards, a number badge, side-by-side buttons and a 1 : 2 : 1 colour bar',
+      'Added a Show Hints button that only gives hints for the questions you got wrong',
+      'Fixed the scoring bug so a perfect score is 4, and fixed typos in the title and questions',
+    ],
+    tags: ['React Native', 'Expo', 'StyleSheet', 'Flexbox'],
+    outcome: 'A cleaner, easier-to-read quiz with rounded cards, proper spacing and correct scoring.',
+    demo: null,
+    video: 'https://youtu.be/qnIbUiBv1HQ',
+    code: 'https://github.com/EiHtet250/C346_L08',
+  },
   {
     id: 'minth',
     title: 'MINTH Adventure Guide',

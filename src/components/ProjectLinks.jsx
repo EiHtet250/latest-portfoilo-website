@@ -1,6 +1,6 @@
 import Icon from './Icon.jsx';
 
-// Demo + code buttons. A missing link shows a disabled "coming soon" button,
+// Demo, video + code buttons. A missing code link shows a disabled "coming soon" button,
 // so every card keeps the same layout.
 export default function ProjectLinks({ project }) {
   return (
@@ -8,6 +8,11 @@ export default function ProjectLinks({ project }) {
       {project.demo && (
         <a className="btn btn-outline btn-sm" href={project.demo} target="_blank" rel="noreferrer">
           Live demo <Icon name="external" size={15} />
+        </a>
+      )}
+      {project.video && (
+        <a className="btn btn-outline btn-sm" href={project.video} target="_blank" rel="noreferrer">
+          <Icon name="play" size={15} /> Watch video
         </a>
       )}
       {project.code ? (

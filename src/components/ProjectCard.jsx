@@ -8,7 +8,8 @@ export default function ProjectCard({ project }) {
 
   return (
     <article className="project-card card">
-      <a className="project-thumb" href={href} aria-label={`Open ${project.title}`}>
+      {/* Phone screenshots are tall, so mobile projects show the whole screen instead of cropping it */}
+      <a className={`project-thumb ${project.categories.includes('mobile') ? 'is-phone' : ''}`} href={href} aria-label={`Open ${project.title}`}>
         <ProjectImage src={project.images[0]} title={project.title} />
         <span className="thumb-hint">
           <Icon name="zoom" size={20} /> View project
